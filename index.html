@@ -6,424 +6,132 @@
 <title>Omoniyi Lawson — Digital Development Practitioner & Researcher</title>
 <meta name="description" content="Omoniyi Lawson is a digital development practitioner, researcher, and advocate working at the intersection of technology, education, and social change across Africa.">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --navy: #0f1f38;
-    --navy-light: #1a3254;
-    --accent: #2a7fff;
-    --accent-light: #e8f2ff;
-    --text: #1a1a2e;
-    --text-secondary: #4a5568;
-    --text-tertiary: #718096;
-    --border: #e2e8f0;
-    --surface: #f8fafc;
-    --white: #ffffff;
-    --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: var(--font);
-    color: var(--text);
-    background: var(--white);
-    font-size: 16px;
-    line-height: 1.7;
-  }
-
-  a { color: var(--accent); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-
-  /* NAV */
-  nav {
-    position: sticky;
-    top: 0;
-    background: rgba(255,255,255,0.95);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--border);
-    z-index: 100;
-    padding: 0 2rem;
-  }
-  .nav-inner {
-    max-width: 900px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 60px;
-  }
-  .nav-name {
-    font-weight: 600;
-    font-size: 15px;
-    color: var(--navy);
-    letter-spacing: -0.01em;
-  }
-  .nav-links {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-  }
-  .nav-links a {
-    font-size: 13px;
-    color: var(--text-secondary);
-    text-decoration: none;
-    transition: color 0.15s;
-  }
-  .nav-links a:hover { color: var(--navy); }
-
-  /* LAYOUT */
-  .container {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 2rem;
-  }
-
-  section {
-    padding: 4rem 0;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .section-label {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 1.5rem;
-  }
-
-  /* HERO */
-  .hero {
-    padding: 5rem 0 4rem;
-    background: var(--white);
-    border-bottom: 1px solid var(--border);
-  }
-  .hero-location {
-    font-size: 13px;
-    color: var(--text-tertiary);
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-  }
-  .hero-location::before {
-    content: '';
-    display: inline-block;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--accent);
-  }
-  .hero h1 {
-    font-size: 48px;
-    font-weight: 700;
-    line-height: 1.1;
-    letter-spacing: -0.03em;
-    color: var(--navy);
-    margin-bottom: 1.25rem;
-    max-width: 620px;
-  }
-  .hero-subtitle {
-    font-size: 17px;
-    color: var(--text-secondary);
-    line-height: 1.7;
-    max-width: 560px;
-    margin-bottom: 2rem;
-  }
-  .hero-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 2.5rem;
-  }
-  .tag {
-    font-size: 12px;
-    padding: 5px 12px;
-    border-radius: 20px;
-    border: 1px solid var(--border);
-    color: var(--text-secondary);
-    background: var(--surface);
-  }
-  .hero-cta {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 14px;
-    padding: 10px 20px;
-    border-radius: 8px;
-    font-weight: 500;
-    transition: all 0.15s;
-    text-decoration: none;
-  }
-  .btn-primary {
-    background: var(--navy);
-    color: var(--white);
-    border: 1px solid var(--navy);
-  }
-  .btn-primary:hover { background: var(--navy-light); text-decoration: none; }
-  .btn-secondary {
-    background: var(--white);
-    color: var(--text);
-    border: 1px solid var(--border);
-  }
-  .btn-secondary:hover { background: var(--surface); text-decoration: none; }
-
-  /* STATS */
-  .stats {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 1rem;
-    margin-top: 2.5rem;
-  }
-  .stat {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.25rem;
-  }
-  .stat-num {
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--navy);
-    letter-spacing: -0.02em;
-  }
-  .stat-label {
-    font-size: 13px;
-    color: var(--text-tertiary);
-    margin-top: 4px;
-  }
-
-  /* ABOUT */
-  .about-text {
-    font-size: 16px;
-    line-height: 1.8;
-    color: var(--text-secondary);
-    max-width: 680px;
-  }
-  .about-text p { margin-bottom: 1.25rem; }
-  .about-text p:last-child { margin-bottom: 0; }
-
-  /* PUBLICATIONS */
-  .pub-list { display: flex; flex-direction: column; gap: 12px; }
-  .pub-item {
-    padding: 1.25rem;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    background: var(--white);
-    transition: border-color 0.15s;
-  }
-  .pub-item:hover { border-color: var(--accent); }
-  .pub-title {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--navy);
-    margin-bottom: 6px;
-    line-height: 1.5;
-  }
-  .pub-meta { font-size: 12px; color: var(--text-tertiary); }
-  .pub-badge {
-    display: inline-block;
-    font-size: 10px;
-    font-weight: 600;
-    padding: 2px 8px;
-    border-radius: 20px;
-    margin-left: 8px;
-    background: var(--accent-light);
-    color: var(--accent);
-    letter-spacing: 0.03em;
-    vertical-align: middle;
-  }
-
-  /* PROGRAMMES */
-  .prog-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1rem;
-  }
-  .prog-card {
-    padding: 1.5rem;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    background: var(--white);
-    transition: all 0.15s;
-  }
-  .prog-card:hover {
-    border-color: var(--accent);
-    box-shadow: 0 4px 20px rgba(42,127,255,0.08);
-  }
-  .prog-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--accent);
-    margin-bottom: 1rem;
-  }
-  .prog-name {
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--navy);
-    margin-bottom: 8px;
-  }
-  .prog-desc {
-    font-size: 13px;
-    color: var(--text-secondary);
-    line-height: 1.65;
-  }
-  .prog-award {
-    display: inline-block;
-    font-size: 11px;
-    color: var(--accent);
-    margin-top: 10px;
-    font-weight: 500;
-  }
-
-  /* BOOK */
-  .book-card {
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 2rem;
-    background: var(--surface);
-    display: flex;
-    gap: 2rem;
-    align-items: flex-start;
-    max-width: 700px;
-  }
-  .book-spine {
-    width: 6px;
-    border-radius: 3px;
-    background: var(--navy);
-    align-self: stretch;
-    flex-shrink: 0;
-    min-height: 120px;
-  }
-  .book-content {}
-  .book-title {
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--navy);
-    margin-bottom: 4px;
-    letter-spacing: -0.02em;
-  }
-  .book-subtitle {
-    font-size: 14px;
-    color: var(--text-tertiary);
-    margin-bottom: 1rem;
-    font-style: italic;
-  }
-  .book-desc {
-    font-size: 14px;
-    color: var(--text-secondary);
-    line-height: 1.7;
-    margin-bottom: 1rem;
-  }
-  .book-status {
-    display: inline-block;
-    font-size: 12px;
-    padding: 4px 12px;
-    border-radius: 20px;
-    border: 1px solid var(--border);
-    color: var(--text-tertiary);
-  }
-
-  /* AWARDS */
-  .award-list { display: flex; flex-direction: column; max-width: 680px; }
-  .award-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    padding: 1rem 0;
-    border-bottom: 1px solid var(--border);
-  }
-  .award-item:last-child { border-bottom: none; }
-  .award-year {
-    font-size: 12px;
-    color: var(--text-tertiary);
-    font-weight: 600;
-    min-width: 40px;
-    margin-top: 2px;
-  }
-  .award-text { font-size: 14px; color: var(--text); line-height: 1.5; }
-
-  /* GOVERNANCE */
-  .gov-list { display: flex; flex-direction: column; gap: 10px; max-width: 680px; }
-  .gov-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    padding: .875rem 1rem;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    background: var(--white);
-  }
-  .gov-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--accent);
-    flex-shrink: 0;
-    margin-top: 6px;
-  }
-  .gov-text { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
-
-  /* CONTACT */
-  .contact-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 1rem;
-    max-width: 680px;
-  }
-  .contact-item {
-    padding: 1.25rem;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    background: var(--white);
-  }
-  .contact-label {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--text-tertiary);
-    margin-bottom: 6px;
-  }
-  .contact-val {
-    font-size: 13px;
-    color: var(--navy);
-    font-weight: 500;
-    word-break: break-all;
-  }
-
-  /* FOOTER */
-  footer {
-    padding: 2.5rem 0;
-    text-align: center;
-    font-size: 13px;
-    color: var(--text-tertiary);
-    background: var(--surface);
-    border-top: 1px solid var(--border);
-  }
-
-  /* MOBILE */
-  @media (max-width: 640px) {
-    .hero h1 { font-size: 32px; }
-    .nav-links { display: none; }
-    .book-card { flex-direction: column; gap: 1rem; }
-    .book-spine { width: 100%; height: 6px; min-height: unset; }
-    section { padding: 3rem 0; }
-  }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080e1a;
+  --bg2:#0d1626;
+  --bg3:#111d33;
+  --accent:#4f9dff;
+  --accent2:#7eb8ff;
+  --gold:#f0c060;
+  --text:#f0f4ff;
+  --text2:#9aabcc;
+  --text3:#5a6e8a;
+  --border:#1e2e4a;
+  --border2:#253550;
+  --font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg);color:var(--text);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+a:hover{color:var(--accent2)}
+nav{position:sticky;top:0;background:rgba(8,14,26,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);z-index:100;padding:0 2rem}
+.nav-inner{max-width:1000px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;height:64px}
+.nav-logo{font-size:15px;font-weight:700;color:var(--text);letter-spacing:-0.02em}
+.nav-logo span{color:var(--accent)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:13px;color:var(--text2);transition:color .15s}
+.nav-links a:hover{color:var(--text)}
+.container{max-width:1000px;margin:0 auto;padding:0 2rem}
+section{padding:5rem 0;border-bottom:1px solid var(--border)}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
+.sec-title{font-size:32px;font-weight:700;letter-spacing:-0.02em;color:var(--text);margin-bottom:2rem}
+.hero{min-height:100vh;display:flex;align-items:center;padding:6rem 0 4rem;background:radial-gradient(ellipse at 70% 50%,rgba(79,157,255,0.07) 0%,transparent 60%),var(--bg);border-bottom:1px solid var(--border)}
+.hero-inner{max-width:1000px;margin:0 auto;padding:0 2rem;display:grid;grid-template-columns:1fr 340px;gap:4rem;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:var(--text2);background:var(--bg3);border:1px solid var(--border2);padding:6px 14px;border-radius:20px;margin-bottom:1.5rem}
+.hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.hero h1{font-size:52px;font-weight:800;line-height:1.05;letter-spacing:-0.04em;color:var(--text);margin-bottom:1.5rem}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero-sub{font-size:17px;color:var(--text2);line-height:1.75;max-width:520px;margin-bottom:2rem}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:2.5rem}
+.tag{font-size:12px;padding:5px 12px;border-radius:20px;border:1px solid var(--border2);color:var(--text2);background:var(--bg3)}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;padding:12px 24px;border-radius:10px;transition:all .15s;text-decoration:none}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:var(--accent2);color:#fff;text-decoration:none}
+.btn-secondary{background:transparent;color:var(--text);border:1px solid var(--border2)}
+.btn-secondary:hover{border-color:var(--accent);color:var(--accent);text-decoration:none}
+.hero-photo{display:flex;flex-direction:column;align-items:center;gap:1.5rem}
+.photo-frame{width:280px;height:300px;border-radius:16px;border:1px solid var(--border2);background:var(--bg3);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;overflow:hidden;position:relative}
+.photo-placeholder-icon{font-size:48px}
+.photo-hint{font-size:11px;color:var(--text3);text-align:center;padding:0 1.5rem;line-height:1.6}
+.photo-hint strong{display:block;color:var(--text2);margin-bottom:4px;font-size:12px}
+.photo-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%}
+.photo-stat{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:.875rem;text-align:center}
+.photo-stat-num{font-size:20px;font-weight:700;color:var(--accent);letter-spacing:-0.02em}
+.photo-stat-label{font-size:11px;color:var(--text3);margin-top:2px}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.about-text{font-size:16px;color:var(--text2);line-height:1.85}
+.about-text p{margin-bottom:1.25rem}
+.about-text p:last-child{margin-bottom:0}
+.about-text strong{color:var(--text)}
+.about-cards{display:flex;flex-direction:column;gap:12px}
+.about-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.25rem}
+.about-card-label{font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text3);margin-bottom:6px}
+.about-card-val{font-size:14px;color:var(--text2)}
+.pub-list{display:flex;flex-direction:column;gap:12px}
+.pub-item{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;transition:all .15s;display:flex;gap:1rem;align-items:flex-start}
+.pub-item:hover{border-color:var(--accent)}
+.pub-bar{width:4px;border-radius:2px;flex-shrink:0;align-self:stretch;min-height:40px}
+.blue{background:var(--accent)}
+.gold{background:var(--gold)}
+.green{background:#7eb87e}
+.pub-title{font-size:14px;font-weight:600;color:var(--text);margin-bottom:6px;line-height:1.5}
+.pub-meta{font-size:12px;color:var(--text3)}
+.badge{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;margin-left:8px;vertical-align:middle;letter-spacing:0.05em}
+.b-blue{background:rgba(79,157,255,0.15);color:var(--accent)}
+.b-gold{background:rgba(240,192,96,0.15);color:var(--gold)}
+.b-green{background:rgba(126,184,126,0.15);color:#7eb87e}
+.prog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.prog-card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:1.75rem;transition:all .2s;position:relative;overflow:hidden}
+.prog-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .2s}
+.prog-card:hover{border-color:var(--border2);transform:translateY(-2px)}
+.prog-card:hover::after{transform:scaleX(1)}
+.prog-icon{font-size:24px;margin-bottom:1rem}
+.prog-name{font-size:16px;font-weight:700;color:var(--text);margin-bottom:8px}
+.prog-desc{font-size:13px;color:var(--text2);line-height:1.65}
+.prog-award{display:inline-flex;align-items:center;gap:6px;font-size:11px;color:var(--gold);margin-top:12px;font-weight:600}
+.prog-award::before{content:'★'}
+.book-card{background:linear-gradient(135deg,var(--bg2),var(--bg3));border:1px solid var(--border2);border-radius:20px;padding:3rem;display:grid;grid-template-columns:auto 1fr;gap:2.5rem;align-items:center;max-width:800px}
+.book-spine{width:80px;background:linear-gradient(180deg,var(--accent),#1a4a8a);border-radius:6px;display:flex;align-items:center;justify-content:center;writing-mode:vertical-lr;text-orientation:mixed;transform:rotate(180deg);font-size:10px;font-weight:700;color:rgba(255,255,255,0.6);letter-spacing:0.1em;text-transform:uppercase;padding:1.5rem 0.75rem;align-self:stretch}
+.book-title{font-size:24px;font-weight:800;color:var(--text);letter-spacing:-0.02em;margin-bottom:6px}
+.book-sub{font-size:14px;color:var(--text3);font-style:italic;margin-bottom:1rem}
+.book-desc{font-size:14px;color:var(--text2);line-height:1.75;margin-bottom:1.25rem}
+.book-pill{display:inline-block;font-size:12px;padding:5px 14px;border-radius:20px;border:1px solid var(--border2);color:var(--text3)}
+.award-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.award-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.25rem;display:flex;gap:1rem;align-items:flex-start;transition:border-color .15s}
+.award-card:hover{border-color:var(--gold)}
+.award-year{font-size:12px;font-weight:700;color:var(--gold);min-width:36px;margin-top:2px}
+.award-text{font-size:13px;color:var(--text2);line-height:1.5}
+.gov-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px}
+.gov-item{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.25rem;display:flex;gap:12px;align-items:flex-start;transition:border-color .15s}
+.gov-item:hover{border-color:var(--accent)}
+.gov-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);flex-shrink:0;margin-top:5px}
+.gov-text{font-size:13px;color:var(--text2);line-height:1.55}
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;max-width:680px}
+.contact-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.25rem;transition:border-color .15s}
+.contact-card:hover{border-color:var(--accent)}
+.contact-label{font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text3);margin-bottom:6px}
+.contact-val{font-size:13px;color:var(--text);font-weight:500;word-break:break-all}
+footer{padding:3rem 0;text-align:center;font-size:13px;color:var(--text3)}
+@media(max-width:768px){
+  .hero-inner{grid-template-columns:1fr;gap:3rem}
+  .hero h1{font-size:36px}
+  .hero-photo{order:-1}
+  .photo-frame{width:100%;height:200px}
+  .about-grid{grid-template-columns:1fr}
+  .book-card{grid-template-columns:1fr}
+  .book-spine{display:none}
+  section{padding:3.5rem 0}
+}
 </style>
 </head>
 <body>
 
 <nav>
   <div class="nav-inner">
-    <span class="nav-name">Omoniyi Lawson</span>
+    <span class="nav-logo">Omoniyi <span>Lawson</span></span>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#research">Research</a></li>
@@ -435,130 +143,103 @@
 </nav>
 
 <div class="hero">
-  <div class="container">
-    <div class="hero-location">Abuja, Nigeria</div>
-    <h1>Digital development practitioner &amp; researcher.</h1>
-    <p class="hero-subtitle">Working at the intersection of technology, education, and social change — generating evidence that directs investment to what actually works for communities across Africa.</p>
-    <div class="hero-tags">
-      <span class="tag">AI Governance</span>
-      <span class="tag">Digital Inclusion</span>
-      <span class="tag">Impact Evaluation</span>
-      <span class="tag">Climate &amp; Sustainability</span>
-      <span class="tag">Digital Rights</span>
-      <span class="tag">Foundational Learning</span>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge">Abuja, Nigeria · Open to opportunities</div>
+      <h1>Digital Development<br><em>Practitioner</em><br>&amp; Researcher.</h1>
+      <p class="hero-sub">Working at the intersection of technology, education, and social change, generating evidence that directs investment to what actually works for communities across Africa.</p>
+      <div class="hero-tags">
+        <span class="tag">AI Governance</span>
+        <span class="tag">Digital Inclusion</span>
+        <span class="tag">Impact Evaluation</span>
+        <span class="tag">Climate &amp; Sustainability</span>
+        <span class="tag">Digital Rights</span>
+        <span class="tag">Foundational Learning</span>
+      </div>
+      <div class="hero-cta">
+        <a href="mailto:niyanlawson@gmail.com" class="btn btn-primary">Get in touch</a>
+        <a href="https://linkedin.com/in/omoniyilawson" target="_blank" class="btn btn-secondary">LinkedIn</a>
+        <a href="https://orcid.org/0009-0007-8000-4675" target="_blank" class="btn btn-secondary">Publications</a>
+      </div>
     </div>
-    <div class="hero-cta">
-      <a href="mailto:niyanlawson@gmail.com" class="btn btn-primary">Get in touch</a>
-      <a href="https://linkedin.com/in/omoniyilawson" target="_blank" class="btn btn-secondary">LinkedIn</a>
-      <a href="https://orcid.org/0009-0007-8000-4675" target="_blank" class="btn btn-secondary">Publications</a>
-    </div>
-    <div class="stats">
-      <div class="stat"><div class="stat-num">30,000+</div><div class="stat-label">beneficiaries reached</div></div>
-      <div class="stat"><div class="stat-num">$900k+</div><div class="stat-label">grants secured</div></div>
-      <div class="stat"><div class="stat-num">12+</div><div class="stat-label">publications</div></div>
-      <div class="stat"><div class="stat-num">55+</div><div class="stat-label">countries engaged</div></div>
+    <div class="hero-photo">
+      <div class="photo-frame">
+        <div class="photo-placeholder-icon">👤</div>
+        <div class="photo-hint">
+          <strong>Add your headshot here</strong>
+          In the HTML, replace this div with:<br>&lt;img src="photo.jpg" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0"&gt;
+        </div>
+      </div>
+      <div class="photo-stats">
+        <div class="photo-stat"><div class="photo-stat-num">30k+</div><div class="photo-stat-label">beneficiaries</div></div>
+        <div class="photo-stat"><div class="photo-stat-num">$900k</div><div class="photo-stat-label">grants secured</div></div>
+        <div class="photo-stat"><div class="photo-stat-num">12+</div><div class="photo-stat-label">publications</div></div>
+        <div class="photo-stat"><div class="photo-stat-num">55+</div><div class="photo-stat-label">countries</div></div>
+      </div>
     </div>
   </div>
 </div>
 
 <section id="about">
   <div class="container">
-    <div class="section-label">About</div>
-    <div class="about-text">
-      <p>I am Managing Partner of the Centre for Digital Development and Innovation Research (CDDIR) within AREAi, and Founder of Digital Shield Social Impact Initiative (DigiShield). Over the past seven years, I have designed and led programmes reaching over 30,000 people across Nigeria, the DRC, and internationally — from foundational literacy for children in conflict zones to AI-powered teacher development and climate sustainability research.</p>
-      <p>My work is grounded in one core belief: the most important question in development is not what sounds good, but what works, for whom, and how we know. That question drives my research, my programmes, and my writing.</p>
-      <p>I serve as Co-Chair of the AI, Digital Learning and Digital Transformation Workstream at the UNESCO SDG4 Youth and Student Network, Programme Officer at the COP30 Children and Youth Pavilion, and member of Chatham House Common Futures Conversations. I am completing executive education in AI and Digital Transformation in Government at Oxford's Saïd Business School in partnership with UNESCO.</p>
+    <div class="eyebrow">About</div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I am Managing Partner of the <strong>Centre for Digital Development and Innovation Research (CDDIR)</strong> within AREAi, and Founder of <strong>Digital Shield Social Impact Initiative (DigiShield)</strong>. Over the past seven years, I have designed and led programmes reaching over 30,000 people across Nigeria, the DRC, and Rwanda.</p>
+        <p>My work is grounded in one core belief: the most important question in development is not what sounds good, but <strong>what works, for whom, and how we know</strong>. That question drives my research, my programmes, and my writing.</p>
+        <p>I serve as Co-Chair of the AI, Digital Learning and Digital Transformation Working Group at the UNESCO SDG4 Youth and Student Network, Programme Officer at the COP30 Children and Youth Pavilion, and member of Chatham House Common Futures Conversations. I am completing executive education in AI and Digital Transformation in Government at Oxford's Saïd Business School in partnership with UNESCO.</p>
+      </div>
+      <div class="about-cards">
+        <div class="about-card"><div class="about-card-label">Current Role</div><div class="about-card-val">Managing Partner, CDDIR/AREAi · Founder, DigiShield</div></div>
+        <div class="about-card"><div class="about-card-label">Education</div><div class="about-card-val">Oxford Saïd / UNESCO · MSc IT (Miva) · PGDip IT, NDA (4.47/5.00)</div></div>
+        <div class="about-card"><div class="about-card-label">Focus Areas</div><div class="about-card-val">AI Governance · Digital Inclusion · Impact Evaluation · Climate Sustainability · Digital Rights</div></div>
+        <div class="about-card"><div class="about-card-label">Website</div><div class="about-card-val"><a href="https://omoniyilawson.github.io">omoniyilawson.github.io</a></div></div>
+      </div>
     </div>
   </div>
 </section>
 
 <section id="research">
   <div class="container">
-    <div class="section-label">Research &amp; Publications</div>
+    <div class="eyebrow">Research</div>
+    <div class="sec-title">Publications &amp; Research Outputs</div>
     <div class="pub-list">
-      <div class="pub-item">
-        <div class="pub-title">Technology-Led Greenhouse Gas Emissions in Nigeria: Environmental Impacts and Digital Sustainability Strategies <span class="pub-badge">Preprint</span></div>
-        <div class="pub-meta">Olanrewaju, G.S., Lawson, O., et al. · 2025 · doi:10.20944/preprints202503.1065.v1</div>
-      </div>
-      <div class="pub-item">
-        <div class="pub-title">Redefining Fairness: Balancing Engagement and Well-Being in Social Media Algorithms <span class="pub-badge">Preprint</span></div>
-        <div class="pub-meta">Lawson, O., et al. · 2025 · Preprints</div>
-      </div>
-      <div class="pub-item">
-        <div class="pub-title">Equity by Design: Leveraging AI and Community Innovation for Inclusive Teacher Professional Learning <span class="pub-badge">Conference</span></div>
-        <div class="pub-meta">Lawson, O. &amp; Olanrewaju, G. · 2026 · BERA Global Perspectives Conference, Leeds Beckett University</div>
-      </div>
-      <div class="pub-item">
-        <div class="pub-title">Bridging Nigeria's Digital Divide: An AI-Enhanced SMS Platform for Universal Information Access <span class="pub-badge">Conference</span></div>
-        <div class="pub-meta">Lawson, O. · 2025 · IEEE CTUS-EMEA Regional Summit, Abuja</div>
-      </div>
-      <div class="pub-item">
-        <div class="pub-title">Smart Climate Awareness, Learning and Empowerment for Net Zero <span class="pub-badge">Conference</span></div>
-        <div class="pub-meta">Lawson, O., et al. · 2025 · International Conference on Climate Action and Sustainability (ICCAS)</div>
-      </div>
-      <div class="pub-item">
-        <div class="pub-title">Responsible Use of Generative AI in Nigerian Schools <span class="pub-badge">Policy Brief</span></div>
-        <div class="pub-meta">Olanrewaju, G.S., Lawson, O., &amp; Adebisi, P. · 2025 · Two editions</div>
-      </div>
-      <div class="pub-item" style="border-style:dashed;border-color:var(--accent);background:var(--accent-light)">
-        <div class="pub-title" style="color:var(--accent)">Full publication list on ORCID</div>
-        <div class="pub-meta"><a href="https://orcid.org/0009-0007-8000-4675" target="_blank">orcid.org/0009-0007-8000-4675</a></div>
-      </div>
+      <div class="pub-item"><div class="pub-bar blue"></div><div><div class="pub-title">Technology-Led Greenhouse Gas Emissions in Nigeria <span class="badge b-blue">PREPRINT</span></div><div class="pub-meta">Olanrewaju, G.S., Lawson, O., et al. · 2025 · doi:10.20944/preprints202503.1065.v1</div></div></div>
+      <div class="pub-item"><div class="pub-bar blue"></div><div><div class="pub-title">Redefining Fairness: Balancing Engagement and Well-Being in Social Media Algorithms <span class="badge b-blue">PREPRINT</span></div><div class="pub-meta">Lawson, O., et al. · 2025 · Preprints</div></div></div>
+      <div class="pub-item"><div class="pub-bar gold"></div><div><div class="pub-title">Equity by Design: Leveraging AI and Community Innovation for Inclusive Teacher Professional Learning <span class="badge b-gold">CONFERENCE</span></div><div class="pub-meta">Lawson, O. &amp; Olanrewaju, G. · 2026 · BERA Global Perspectives Conference, Leeds Beckett University</div></div></div>
+      <div class="pub-item"><div class="pub-bar gold"></div><div><div class="pub-title">Bridging Nigeria's Digital Divide: An AI-Enhanced SMS Platform for Universal Information Access <span class="badge b-gold">CONFERENCE</span></div><div class="pub-meta">Lawson, O. · 2025 · IEEE CTUS-EMEA Regional Summit, Abuja</div></div></div>
+      <div class="pub-item"><div class="pub-bar gold"></div><div><div class="pub-title">Smart Climate Awareness, Learning and Empowerment for Net Zero <span class="badge b-gold">CONFERENCE</span></div><div class="pub-meta">Lawson, O., et al. · 2025 · International Conference on Climate Action and Sustainability (ICCAS)</div></div></div>
+      <div class="pub-item"><div class="pub-bar green"></div><div><div class="pub-title">Responsible Use of Generative AI in Nigerian Schools <span class="badge b-green">POLICY BRIEF</span></div><div class="pub-meta">Olanrewaju, G.S., Lawson, O., &amp; Adebisi, P. · 2025 · Two editions</div></div></div>
+      <div class="pub-item" style="border-color:rgba(79,157,255,0.3);background:rgba(79,157,255,0.05)"><div class="pub-bar blue"></div><div><div class="pub-title" style="color:var(--accent)">Full publication list on ORCID →</div><div class="pub-meta"><a href="https://orcid.org/0009-0007-8000-4675" target="_blank">orcid.org/0009-0007-8000-4675</a></div></div></div>
     </div>
   </div>
 </section>
 
 <section id="programmes">
   <div class="container">
-    <div class="section-label">Programmes &amp; Products</div>
+    <div class="eyebrow">Programmes &amp; Products</div>
+    <div class="sec-title">Impact Portfolio</div>
     <div class="prog-grid">
-      <div class="prog-card">
-        <div class="prog-dot"></div>
-        <div class="prog-name">FastTrack</div>
-        <div class="prog-desc">Accelerated foundational literacy and numeracy for 25,000+ children in IDP and refugee camps across Nigeria and the DRC. Uses TaRL methodology with text-to-speech and bilingual instruction.</div>
-        <div class="prog-award">&#9733; UNESCO Confucius Prize 2024 · WISE Finalist 2025</div>
-      </div>
-      <div class="prog-card">
-        <div class="prog-dot"></div>
-        <div class="prog-name">Afara.AI</div>
-        <div class="prog-desc">WhatsApp and Telegram-based AI micro-CPD tool for teachers, grounded in TaRL methodology. Built for low-connectivity environments. Deployed to 625+ teachers across Nigeria and DRC.</div>
-      </div>
-      <div class="prog-card">
-        <div class="prog-dot"></div>
-        <div class="prog-name">CarbonTrac.AI</div>
-        <div class="prog-desc">Africa's first digital carbon footprint calculator for the technology sector. Enables organisations to measure, visualise, and report technology-led carbon emissions and identify mitigation pathways.</div>
-        <div class="prog-award">&#9733; QS ImpACT Award Climate Education 2025</div>
-      </div>
-      <div class="prog-card">
-        <div class="prog-dot"></div>
-        <div class="prog-name">DigiShield DSA</div>
-        <div class="prog-desc">Digital Skills Accelerator reaching 5,000+ women and girls, including the WebWise Women track for IDP and refugee settings. Civic education on digital safety, rights, and online harm reduction.</div>
-        <div class="prog-award">&#9733; Equals in Tech Award 2022</div>
-      </div>
-      <div class="prog-card">
-        <div class="prog-dot"></div>
-        <div class="prog-name">FoundaMENTA</div>
-        <div class="prog-desc">Teacher continuous professional development programme integrating structured pedagogy, adaptive learning, and community-led peer mentoring networks for educators in underserved contexts.</div>
-      </div>
-      <div class="prog-card">
-        <div class="prog-dot"></div>
-        <div class="prog-name">SCALE for Net Zero</div>
-        <div class="prog-desc">UKFCDO-funded programme on technology-led GHG emissions in Nigeria. Includes LMS development, CarbonTrac.AI, primary research, and stakeholder policy engagement at national and international levels.</div>
-      </div>
+      <div class="prog-card"><div class="prog-icon">📚</div><div class="prog-name">FastTrack</div><div class="prog-desc">Accelerated foundational literacy and numeracy for 25,000+ children in IDP and refugee camps across Nigeria and the DRC. TaRL methodology with text-to-speech and bilingual instruction.</div><div class="prog-award">UNESCO Confucius Prize 2024 · WISE Finalist 2025</div></div>
+      <div class="prog-card"><div class="prog-icon">🤖</div><div class="prog-name">Afara.AI</div><div class="prog-desc">WhatsApp and Telegram-based AI micro-CPD tool for teachers. Built for low-connectivity environments. Deployed to 625+ teachers across Nigeria and the DRC.</div></div>
+      <div class="prog-card"><div class="prog-icon">🌍</div><div class="prog-name">CarbonTrac.AI</div><div class="prog-desc">Africa's first digital carbon footprint calculator for the technology sector. Enables organisations to measure, visualise, and report technology-led carbon emissions.</div><div class="prog-award">QS ImpACT Award Climate Education 2025</div></div>
+      <div class="prog-card"><div class="prog-icon">🛡️</div><div class="prog-name">DigiShield DSA</div><div class="prog-desc">Digital Skills Accelerator reaching 5,000+ women and girls including the WebWise Women track for IDP and refugee settings.</div><div class="prog-award">Equals in Tech Award 2022</div></div>
+      <div class="prog-card"><div class="prog-icon">👩‍🏫</div><div class="prog-name">FoundaMENTA</div><div class="prog-desc">Teacher continuous professional development integrating structured pedagogy, adaptive learning, and community-led peer mentoring for educators in underserved contexts.</div></div>
+      <div class="prog-card"><div class="prog-icon">⚡</div><div class="prog-name">SCALE for Net Zero</div><div class="prog-desc">UKFCDO-funded programme on technology-led GHG emissions in Nigeria. LMS development, CarbonTrac.AI, primary research, and policy engagement.</div></div>
     </div>
   </div>
 </section>
 
 <section id="book">
   <div class="container">
-    <div class="section-label">Book in Progress</div>
+    <div class="eyebrow">Book in Progress</div>
     <div class="book-card">
-      <div class="book-spine"></div>
-      <div class="book-content">
+      <div class="book-spine">Visible to Everyone But Yourself</div>
+      <div>
         <div class="book-title">Visible to Everyone But Yourself</div>
-        <div class="book-subtitle">Privacy, Power, and Who's Really Writing Your Story</div>
-        <div class="book-desc">A work of cultural criticism and narrative nonfiction examining how digital platforms and AI systems shape human identity, behaviour, and power — invisibly, and by design. Written from Nigeria, for a global audience underserved by existing literature on surveillance capitalism. The book argues that privacy is not about secrecy — it is about ownership of one's own story. Eight draft chapters complete.</div>
-        <span class="book-status">Eight chapters drafted · In progress</span>
+        <div class="book-sub">Privacy, Power, and Who's Really Writing Your Story</div>
+        <div class="book-desc">A work of cultural criticism and narrative nonfiction examining how digital platforms and AI systems shape human identity, behaviour, and power — invisibly, and by design. Written from Nigeria, for a global audience underserved by existing literature on surveillance capitalism. Eight draft chapters complete.</div>
+        <span class="book-pill">Eight chapters drafted · In progress</span>
       </div>
     </div>
   </div>
@@ -566,24 +247,27 @@
 
 <section>
   <div class="container">
-    <div class="section-label">Recognition</div>
-    <div class="award-list">
-      <div class="award-item"><div class="award-year">2024</div><div class="award-text">UNESCO Confucius Prize for Literacy — AREAi FastTrack Programme</div></div>
-      <div class="award-item"><div class="award-year">2025</div><div class="award-text">WISE (World Innovation Summit for Education) Finalist</div></div>
-      <div class="award-item"><div class="award-year">2025</div><div class="award-text">QS ImpACT Award for Climate Education</div></div>
-      <div class="award-item"><div class="award-year">2026</div><div class="award-text">American Express Leadership Academy EMEA — Academy Fellow</div></div>
-      <div class="award-item"><div class="award-year">2024</div><div class="award-text">USAID Youth Well-being Prize — Top 10 Finalist, Digital Harm Category</div></div>
-      <div class="award-item"><div class="award-year">2022</div><div class="award-text">Equals in Tech Award — Research Category</div></div>
-      <div class="award-item"><div class="award-year">2024</div><div class="award-text">Nigerian School on Internet Governance Fellow</div></div>
+    <div class="eyebrow">Recognition</div>
+    <div class="sec-title">Awards &amp; Honours</div>
+    <div class="award-grid">
+      <div class="award-card"><div class="award-year">2024</div><div class="award-text">UNESCO Confucius Prize for Literacy — AREAi FastTrack Programme</div></div>
+      <div class="award-card"><div class="award-year">2025</div><div class="award-text">WISE (World Innovation Summit for Education) Finalist</div></div>
+      <div class="award-card"><div class="award-year">2025</div><div class="award-text">QS ImpACT Award for Climate Education</div></div>
+      <div class="award-card"><div class="award-year">2026</div><div class="award-text">American Express Leadership Academy EMEA — Academy Fellow</div></div>
+      <div class="award-card"><div class="award-year">2024</div><div class="award-text">USAID Youth Well-being Prize — Top 10 Finalist, Digital Harm Category</div></div>
+      <div class="award-card"><div class="award-year">2022</div><div class="award-text">Equals in Tech Award — Research Category</div></div>
+      <div class="award-card"><div class="award-year">2024</div><div class="award-text">Nigerian School on Internet Governance Fellow</div></div>
+      <div class="award-card"><div class="award-year">2025</div><div class="award-text">Global Challenge Reviewer, MIT Solve</div></div>
     </div>
   </div>
 </section>
 
 <section>
   <div class="container">
-    <div class="section-label">Governance &amp; International Engagement</div>
+    <div class="eyebrow">Governance</div>
+    <div class="sec-title">International Engagement</div>
     <div class="gov-list">
-      <div class="gov-item"><div class="gov-dot"></div><div class="gov-text">Co-Chair, AI, Digital Learning &amp; Digital Transformation Workstream — UNESCO SDG4 Youth &amp; Student Network (Jan 2025 – present)</div></div>
+      <div class="gov-item"><div class="gov-dot"></div><div class="gov-text">Co-Chair, AI, Digital Learning &amp; Digital Transformation — UNESCO SDG4 Youth &amp; Student Network (Jan 2025 – present)</div></div>
       <div class="gov-item"><div class="gov-dot"></div><div class="gov-text">Programme Officer, Programmes Working Group — Children and Youth Pavilion, UNFCCC COP29 &amp; COP30 (Mar 2025 – present)</div></div>
       <div class="gov-item"><div class="gov-dot"></div><div class="gov-text">Member, Chatham House Common Futures Conversations (Mar 2025 – present)</div></div>
       <div class="gov-item"><div class="gov-dot"></div><div class="gov-text">Board Member, Tunani Initiative — youth-led civic organisation advancing democratic governance (2024 – present)</div></div>
@@ -593,22 +277,22 @@
   </div>
 </section>
 
-<section id="contact">
+<section id="contact" style="background:radial-gradient(ellipse at 30% 50%,rgba(79,157,255,0.05),transparent 60%)">
   <div class="container">
-    <div class="section-label">Contact</div>
+    <div class="eyebrow">Contact</div>
+    <div class="sec-title">Get in touch</div>
     <div class="contact-grid">
-      <div class="contact-item"><div class="contact-label">Email</div><div class="contact-val"><a href="mailto:niyanlawson@gmail.com">niyanlawson@gmail.com</a></div></div>
-      <div class="contact-item"><div class="contact-label">Phone</div><div class="contact-val">+234 806 801 5338</div></div>
-      <div class="contact-item"><div class="contact-label">LinkedIn</div><div class="contact-val"><a href="https://linkedin.com/in/omoniyilawson" target="_blank">omoniyilawson</a></div></div>
-      <div class="contact-item"><div class="contact-label">ORCID</div><div class="contact-val"><a href="https://orcid.org/0009-0007-8000-4675" target="_blank">0009-0007-8000-4675</a></div></div>
-      <div class="contact-item"><div class="contact-label">Location</div><div class="contact-val">Abuja, Nigeria</div></div>
+      <div class="contact-card"><div class="contact-label">Email</div><div class="contact-val"><a href="mailto:niyanlawson@gmail.com">niyanlawson@gmail.com</a></div></div>
+      <div class="contact-card"><div class="contact-label">Phone</div><div class="contact-val">+234 806 801 5338</div></div>
+      <div class="contact-card"><div class="contact-label">LinkedIn</div><div class="contact-val"><a href="https://linkedin.com/in/omoniyilawson" target="_blank">omoniyilawson</a></div></div>
+      <div class="contact-card"><div class="contact-label">ORCID</div><div class="contact-val"><a href="https://orcid.org/0009-0007-8000-4675" target="_blank">0009-0007-8000-4675</a></div></div>
+      <div class="contact-card"><div class="contact-label">Location</div><div class="contact-val">Abuja, Nigeria</div></div>
+      <div class="contact-card"><div class="contact-label">Website</div><div class="contact-val"><a href="https://omoniyilawson.github.io" target="_blank">omoniyilawson.github.io</a></div></div>
     </div>
   </div>
 </section>
 
-<footer>
-  &copy; 2026 Omoniyi Lawson &nbsp;&middot;&nbsp; All rights reserved
-</footer>
+<footer><div class="container"><p>&copy; 2026 Omoniyi Lawson &nbsp;&middot;&nbsp; <a href="https://omoniyilawson.github.io">omoniyilawson.github.io</a></p></div></footer>
 
 </body>
 </html>
