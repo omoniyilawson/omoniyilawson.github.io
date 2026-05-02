@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Omoniyi Lawson — Digital Development Practitioner & Researcher</title>
 <meta name="description" content="Omoniyi Lawson is a digital development practitioner, researcher, and advocate working at the intersection of technology, education, and social change across Africa.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;0,9..144,800;1,9..144,300;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
@@ -32,7 +35,8 @@
 }
 
 html{scroll-behavior:smooth}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;transition:background .3s,color .3s}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;transition:background .3s,color .3s}
+h1,h2,h3,.sec-title,.book-title,.win-title,.prog-name,.tl-title,.hero h1{font-family:'Fraunces',Georgia,serif}
 a{color:var(--accent);text-decoration:none}
 a:hover{color:var(--accent2)}
 
@@ -49,15 +53,15 @@ nav{position:fixed;top:0;left:0;right:0;background:var(--nav-bg);backdrop-filter
 .theme-btn:hover{border-color:var(--accent)}
 
 /* HERO — FULL SCREEN PHOTO BG */
-.hero{position:relative;height:100vh;min-height:600px;display:flex;align-items:flex-end;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background-image:url('photo.jpg');background-size:cover;background-position:center top;filter:grayscale(20%)}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,12,24,0.97) 0%,rgba(6,12,24,0.75) 40%,rgba(6,12,24,0.2) 70%,transparent 100%)}
+.hero{position:relative;height:100vh;min-height:600px;display:flex;align-items:flex-end;overflow:hidden;background:var(--bg)}
+.hero-bg{position:absolute;inset:0;background-image:url('photo.jpg');background-size:contain;background-position:right center;background-repeat:no-repeat;background-color:#c2c2c2;filter:grayscale(20%)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,#060c18 0%,#060c18 25%,rgba(6,12,24,0.95) 35%,rgba(6,12,24,0.7) 45%,rgba(80,80,80,0.2) 60%,transparent 72%),linear-gradient(to top,#060c18 0%,rgba(6,12,24,0.4) 20%,transparent 40%)}
 .hero-content{position:relative;z-index:2;max-width:1100px;margin:0 auto;padding:0 2rem 4rem;width:100%}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,0.7);background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);padding:6px 14px;border-radius:20px;margin-bottom:1.25rem;backdrop-filter:blur(8px)}
 .hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:#4caf50;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
-.hero h1{font-size:64px;font-weight:800;line-height:1.0;letter-spacing:-0.04em;color:#fff;margin-bottom:1rem}
-.hero-anim{color:var(--accent)}
+.hero h1{font-size:64px;font-weight:800;line-height:1.0;letter-spacing:-0.02em;color:#fff;margin-bottom:1rem;font-family:'Fraunces',Georgia,serif}
+.hero-anim{color:var(--accent);font-style:italic}
 .hero-sub{font-size:18px;color:rgba(255,255,255,0.65);line-height:1.7;max-width:560px;margin-bottom:2rem}
 .hero-row{display:flex;gap:1rem;flex-wrap:wrap;align-items:center}
 .btn{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;padding:12px 24px;border-radius:10px;transition:all .2s;text-decoration:none;cursor:pointer}
@@ -247,8 +251,8 @@ footer{padding:2.5rem 0;text-align:center;font-size:13px;color:var(--text3);bord
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <div class="hero-badge">Abuja, Nigeria &nbsp;·&nbsp;</div>
-    <h1>Digital Development<br><span class="hero-anim" id="animText">Practitioner.</span></h1>
+    <div class="hero-badge">Abuja, Nigeria &nbsp;·&nbsp; Open to opportunities</div>
+    <h1>Digital development<br><span class="hero-anim" id="animText">Practitioner.</span></h1>
     <p class="hero-sub">Working at the intersection of technology, education, and social change, generating evidence that directs investment to what actually works for communities across Africa.</p>
     <div class="hero-row">
       <a href="mailto:niyanlawson@gmail.com" class="btn btn-white">Get in touch</a>
@@ -377,7 +381,6 @@ footer{padding:2.5rem 0;text-align:center;font-size:13px;color:var(--text3);bord
       <div class="prog-card blue"><div class="prog-icon">🔐</div><div class="prog-name">Data Shield for Impact — Train the Trainer</div><div class="prog-desc">2-day workshop on digital security, encryption, and AI ethics for civil society and media practitioners. Nigeria AI Collective. March 2026.</div></div>
       <div class="prog-card gold"><div class="prog-icon">🏛️</div><div class="prog-name">Federal Ministry Spokespersons Workshop</div><div class="prog-desc">2-day facilitation for government communications officers on AI integration and digital advocacy. 2025.</div></div>
       <div class="prog-card blue"><div class="prog-icon">🤖</div><div class="prog-name">AI in Education Workshop</div><div class="prog-desc">Responsible AI integration for 38 education practitioners across Nigeria. AREAi. January 2026.</div></div>
-      <div class="prog-card gold"><div class="prog-icon">🏳️‍🌈</div><div class="prog-name">EEE Programme — Intersex Nigeria</div><div class="prog-desc">2-day digital empowerment workshop and 9-week life competency training for SOGIESC youth. Trauma-informed facilitation. 2026.</div></div>
       <div class="prog-card green"><div class="prog-icon">🌍</div><div class="prog-name">Youth Engagement on Digital & Environmental Sustainability</div><div class="prog-desc">Co-organised with Federal Ministry of Environment and EU support. Technical session design, 200 participants. 2026.</div></div>
       <div class="prog-card blue"><div class="prog-icon">🤝</div><div class="prog-name">Linking & Learning — AREAi / Malala Fund</div><div class="prog-desc">Ongoing capacity development facilitation across the Joint Action Grant Consortium — peer learning across Nigeria and sub-Saharan Africa.</div></div>
     </div>
